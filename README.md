@@ -26,7 +26,7 @@ This project focuses in Dependency injection, Spring Data and Thymleaf.
 
 
 ## Find this repository useful? :heart:
-Support it by joining __[stargazers](https://github.com/bangaromaric/repos-talk/stargazers)__ for this repository. :star: 🤩 <br>
+Support it by joining __[stargazers](https://github.com/bangaromaric/Order-app/stargazers)__ for this repository. :star: 🤩 <br>
 
 
 # License
