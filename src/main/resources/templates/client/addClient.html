@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      th:replace="fragments/layout :: layout(~{::section})">
+<body>
+
+<section>
+    <div class="row">
+
+        <div class="col s12 m4 l2"></div>
+        <div class="col s12 m4 l8">
+            <form class="col s12" action="#" th:action="@{/addClient}"
+                  th:object="${client}" method="post"  >
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input th:field="*{nom}" id="first_name" type="text" class="validate">
+                        <label for="first_name">Nom</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="last_name" th:field="*{adresse}" type="text" class="validate">
+                        <label for="last_name">Adresse</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="email" th:field="*{mail}" type="text" class="validate">
+                        <label for="email">Mail</label>
+                    </div>
+                    <div id="ifSoc" style="display: none;" class="input-field col s12">
+                        <input id="mat"  name="mat" type="text" class="validate">
+                        <label for="mat">Matricule finance</label>
+                    </div>
+
+                    <div class="col s12">
+                        <label>Type de client</label>
+                        <select name="type" required class="browser-default" onchange="yesnoCheck(this);">
+                            <option value="" disabled selected>Choisir votre type</option>
+                            <option value="1">Particulier</option>
+                            <option value="2">Societe</option>
+                        </select>
+                    </div>
+                    <div class="input-field col s6">
+                        <button class="btn waves-effect waves-light pink accent-4 " type="submit" name="action">Envoyer
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col s12 m4 l2"></div>
+
+
+    </div>
+    <div th:replace="fragments/components :: selectJs"></div>
+
+</section>
+
+
+
+<!--<th:block layout:fragment="script">-->
+<!--    <script th:src="@{/page.js}"></script>-->
+<!--    <script>-->
+<!--        function yesnoCheck(that) {-->
+<!--            if (that.value == "2") {-->
+<!--                // alert("check");-->
+<!--                document.getElementById("ifSoc").style.display = "block";-->
+<!--                document.getElementById("mat").required = true;-->
+<!--            } else {-->
+<!--                document.getElementById("ifSoc").style.display = "none";-->
+<!--            }-->
+<!--        }-->
+<!--    </script>-->
+<!--</th:block>-->
+</body>
+
+<!--<script type="text/javascript">-->
+<!--    function yesnoCheck(that) {-->
+<!--        if (that.value == "2") {-->
+<!--            // alert("check");-->
+<!--            document.getElementById("ifSoc").style.display = "block";-->
+<!--            document.getElementById("mat").required = true;-->
+<!--        } else {-->
+<!--            document.getElementById("ifSoc").style.display = "none";-->
+<!--        }-->
+<!--    }-->
+<!--</script>-->
+</html>

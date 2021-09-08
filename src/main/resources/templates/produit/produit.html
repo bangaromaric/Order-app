@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      th:replace="fragments/layout :: layout(~{::section})">
+
+<body>
+
+
+<section>
+<div class="row">
+    <div class="col s12 m4 l2"></div>
+    <div class="col s12 m4 l8">
+        <div th:replace="fragments/components :: addBtn('addProduit')"></div>
+        <table>
+            <thead>
+            <tr>
+                <th>Désignation</th>
+                <th>Unité</th>
+                <th>Poids Unitaire</th>
+                <th>Prix Unitaire</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="produit : ${produits}">
+                <td th:text="${produit.designation}">Désignation</td>
+                <td th:text="${produit.unite}">Unité</td>
+                <td th:text="${produit.poidsUnitaire}">Poids Unitaire</td>
+                <td th:text="${produit.prixUnitaire}">Prix Unitaire</td>
+
+            </tr>
+            </tbody>
+        </table>
+        </div>
+
+            <div class="col s12 m4 l2"></div>
+
+        </div>
+</section>
+
+
+
+</body>
+</html>

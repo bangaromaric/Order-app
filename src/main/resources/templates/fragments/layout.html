@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+<div th:replace="fragments/components :: head"></div>
+<body>
+<div th:replace="fragments/components :: menu"></div>
+<div th:replace="fragments/components :: menu-mobile"></div>
+<!--<div class="progress">-->
+<!--    <div class="indeterminate"></div>-->
+<!--</div>-->
+<div class="row"></div>
+<div class="row"></div>
+
+<section th:replace="${content}">
+</section>
+
+
+<div th:replace="fragments/components :: footer"></div>
+
+
+</body>
+<div th:replace="fragments/components :: commonJs"></div>
+
+</html>

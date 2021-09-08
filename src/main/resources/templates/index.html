@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      th:replace="fragments/layout :: layout(~{::section})">
+<body>
+
+<section>
+
+<div class="row">
+    <div class="col s12 m4 l2"></div>
+
+    <div class="col s12 m4 l8">
+        <div th:replace="fragments/components :: addBtn('addClient')"></div>
+        <table>
+            <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Email</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="client : ${particuliers}">
+                <td th:text="${client.nom}">Nom</td>
+                <td th:text="${client.adresse}">Adresse</td>
+                <td th:text="${client.mail}">Email</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="col s12 m4 l2"></div>
+
+</div>
+</section>
+
+</body>
+</html>

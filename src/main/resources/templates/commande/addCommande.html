@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      th:replace="fragments/layout :: layout(~{::section})">
+<body>
+
+<section>
+    <div class="row">
+        <div class="col s12 m4 l2"></div>
+        <div class="col s12 m4 l8">
+            <form class="col s12" action="#" th:action="@{/addCommandes}"
+                  th:object="${produit}" method="post" >
+
+                <div class="row">
+                    <div class="col s12">
+                        <label>Client</label>
+                        <select name="client" required class="browser-default" >
+                            <option value="" disabled selected>Choisir le client</option>
+                            <option
+                                    th:each="client : ${clients}"
+                                    th:value="${client.id}" th:text="${client.nom}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col s12">
+                        <label>Produit</label>
+                        <select name="produit" required class="browser-default" >
+                            <option value="" disabled selected>Choisir le produit</option>
+                            <option
+                                    th:each="produit : ${produits}"
+                                    th:value="${produit.id}" th:text="${produit.designation}+' - '+${produit.prixUnitaire}+' FCFA'">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="input-field col s12">
+                        <input required name="quantite" id="quantite" type="number" class="validate">
+                        <label for="quantite">Quantite</label>
+                    </div>
+
+                    <div class="input-field col s12">
+                        <input required name="remise" id="remise" type="number" class="validate">
+                        <label for="remise">Remise</label>
+                    </div>
+
+                    <div class="input-field col s6">
+                        <button class="btn waves-effect waves-light pink accent-4 " type="submit" name="action">Envoyer
+                            <i class="material-icons right">send</i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col s12 m4 l2"></div>
+
+
+    </div>
+
+</section>
+
+</body>
+</html>
