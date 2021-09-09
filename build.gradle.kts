@@ -49,3 +49,6 @@ tasks.withType<Test> {
     useJUnitPlatform()
 }
 
+tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
+    mainClass.set("ga.banga.commande.CommandeApplication")
+}
