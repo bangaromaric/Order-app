@@ -51,7 +51,10 @@ tasks.withType<Test> {
 
 tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar") {
     archiveClassifier.set("boot")
-    mainClass.set("ga.banga.commande.CommandeApplication")
+    manifest {
+        attributes("Start-Class" to "ga.banga.commande.CommandeApplicationKt")
+    }
+//    mainClass.set("ga.banga.commande.CommandeApplication")
 }
 
 tasks.getByName<Jar>("jar") {
