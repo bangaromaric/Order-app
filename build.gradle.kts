@@ -9,6 +9,8 @@ plugins {
 }
 
 
+
+
 group = "ga.banga"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -54,9 +56,11 @@ tasks.getByName<org.springframework.boot.gradle.tasks.bundling.BootJar>("bootJar
     manifest {
         attributes("Start-Class" to "ga.banga.commande.CommandeApplicationKt")
     }
-//    mainClass.set("ga.banga.commande.CommandeApplication")
 }
 
 tasks.getByName<Jar>("jar") {
     archiveClassifier.set("")
 }
+
+
+

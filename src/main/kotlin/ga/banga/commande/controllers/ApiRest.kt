@@ -11,12 +11,13 @@ import java.util.*
 
 @RestController
 @RequestMapping("api/")
-class ClientController {
+class ApiRest {
 
     @Autowired
     lateinit var metier: MetierImpl
 
     @GetMapping("clients")
+    @CrossOrigin(origins = ["http://localhost:8080"])
     fun findClients() : Collection<Client>{
         val result: Collection<Client> = metier.findAllClients()
         return result.ifEmpty {
