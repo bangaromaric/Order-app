@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.web.servlet.config.annotation.EnableWebMvc
 
 @SpringBootApplication
 class CommandeApplication : CommandLineRunner {
@@ -17,10 +18,10 @@ class CommandeApplication : CommandLineRunner {
 
 
     override fun run(vararg args: String?) {
-        metier.insertSociete(Societe(0,"SEEG", "VILLE", "contact@seeg.ga", "748sdsd"))
-        metier.insertSociete(Societe(0,"CNSS", "Renovation", "contact@cnss.ga", "78451"))
-        metier.insertParticulier(Particulier(0,"Romaric BANGA", "Akebe", "bangaromaric@gmail.ga"))
-        metier.insertParticulier(Particulier(0,"Tanguy BANGA", "Akebe", "bangatanguy@gmail.ga"))
+        metier.insertSociete(Societe(0,"SEEG", "VILLE", "contact@seeg.ga", "748sdsd","qwerty"))
+        metier.insertSociete(Societe(0,"CNSS", "Renovation", "contact@cnss.ga", "78451","qwerty"))
+        metier.insertParticulier(Particulier(0,"Romaric BANGA", "Akebe", "bangaromaric@gmail.ga","qwerty"))
+        metier.insertParticulier(Particulier(0,"Tanguy BANGA", "Akebe", "bangatanguy@gmail.ga","qwerrttyy"))
         metier.insertProduit(Produit(0,"PS5", Unite.MG, 20, 499000.0))
         metier.insertProduit(Produit(0,"XBOX Serie X", Unite.MG, 20, 399000.0))
 

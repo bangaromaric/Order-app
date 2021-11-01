@@ -14,15 +14,30 @@
                     <div class="input-field col s12">
                         <input th:field="*{nom}" id="first_name" type="text" class="validate">
                         <label for="first_name">Nom</label>
+                        <div class="card-panel red lighten-4" th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></div>
+
                     </div>
                     <div class="input-field col s12">
                         <input id="last_name" th:field="*{adresse}" type="text" class="validate">
                         <label for="last_name">Adresse</label>
+                        <div class="card-panel red lighten-4" th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}"></div>
                     </div>
                     <div class="input-field col s12">
-                        <input id="email" th:field="*{mail}" type="text" class="validate">
-                        <label for="email">Mail</label>
+                        <input id="mail" th:field="*{mail}" type="text" class="validate">
+                        <label for="mail">E-Mail</label>
+                        <div class="card-panel red lighten-4" th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}"></div>
                     </div>
+                    <div class="input-field col s12">
+                        <input id="pwd" th:field="*{password}" type="password" class="validate">
+                        <label for="pwd">Mot de passe</label>
+                        <div class="card-panel red lighten-4" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="repwd" th:field="*{rePassword}" type="password" class="validate">
+                        <label for="repwd">Confirmer le mot de passe</label>
+                        <div class="card-panel red lighten-4" th:if="${#fields.hasErrors('rePassword')}" th:errors="*{rePassword}"></div>
+                    </div>
+
                     <div id="ifSoc" style="display: none;" class="input-field col s12">
                         <input id="mat"  name="mat" type="text" class="validate">
                         <label for="mat">Matricule finance</label>
@@ -38,7 +53,7 @@
                     </div>
                     <div class="input-field col s6">
                         <button class="btn waves-effect waves-light pink accent-4 " type="submit" name="action">Envoyer
-                            <i class="material-icons right">send</i>
+                            <i class="material-icons right">Ajouter</i>
                         </button>
                     </div>
                 </div>

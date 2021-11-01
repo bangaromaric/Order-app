@@ -1,21 +1,30 @@
 package ga.banga.commande.controllers
 
+import ga.banga.commande.domain.dto.ParticulierPostDto
+import ga.banga.commande.domain.dto.SocieteGetDto
+import ga.banga.commande.domain.mapper.MapStructMapper
 import ga.banga.commande.entities.*
-import ga.banga.commande.metier.MetierImpl
+import ga.banga.commande.metier.IMetier
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
+import org.springframework.validation.BindingResult
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.ModelAttribute
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import java.util.*
+import javax.validation.Valid
 
 @Controller
 class WebController {
     @Autowired
-    lateinit var metier: MetierImpl
-    
+    lateinit var metier: IMetier
+
+    @Autowired
+    lateinit var mapstructMapper: MapStructMapper
+
     @GetMapping("/")
     fun home(model: Model): String {
         val part: Collection<Particulier> = metier.findAllParticuliers()
@@ -31,7 +40,7 @@ class WebController {
 
     @GetMapping("/societe")
     fun getSocietes(model: Model): String {
-        val sos: Collection<Societe> = metier.findAllSocietes()
+        val sos: Collection<SocieteGetDto> = mapstructMapper.societeAllToSocieteGetDto(metier.findAllSocietes())
         model.addAttribute("societes", sos)
         return "client/societe"
     }
@@ -57,22 +66,35 @@ class WebController {
 
     @GetMapping("/addClient")
     fun addParticulier(model: Model): String {
-        model.addAttribute("client", Particulier())
+        model.addAttribute("client", ParticulierPostDto())
         return "client/addClient"
     }
 
     @PostMapping("/addClient")
     fun particulierSubmit(
-        @ModelAttribute particulier: Particulier,
+        @Valid @ModelAttribute("client") particulierPostDto: ParticulierPostDto,
+        result: BindingResult,
         model: Model,
         @RequestParam type: String,
         @RequestParam mat: String
     ): String {
-        return if (type == "1") {
-            metier.insertParticulier(particulier)
-            "redirect:/"
-        } else {
-            val societe = Societe(0,particulier.nom, particulier.adresse, particulier.mail, mat)
+        return if (result.hasErrors()) {
+            "client/addClient"
+
+        }else if(type == "1"){
+            if (particulierPostDto.password == particulierPostDto.rePassword){
+                val particulier = mapstructMapper.particulierPostDtoToParticulier(particulierPostDto)
+                metier.insertParticulier(particulier)
+                "redirect:/"
+            }
+            else{
+                ""
+            }
+
+        }
+        else {
+         val particulier = mapstructMapper.particulierPostDtoToParticulier(particulierPostDto)
+            val societe = Societe(0,particulier.nom, particulier.adresse, particulier.mail, mat,"qwerty")
             metier.insertSociete(societe)
             "redirect:/societe"
         }
@@ -102,7 +124,7 @@ class WebController {
         model: Model
     ): String {
 //        metier.insertProduit(produit);
-        val cmd: Commande = metier.insertCommande(Commande(0,Date(), remise.toInt(), produit.prixUnitaire, client))
+        val cmd: Commande = metier.insertCommande(Commande(0, Date(), remise.toInt(), produit.prixUnitaire, client))
         metier.insertLigneCommand(LigneCommands(0,produit, cmd, quantite.toInt()))
 
         return "redirect:/commandes"

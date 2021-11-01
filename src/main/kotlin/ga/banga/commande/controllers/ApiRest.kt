@@ -79,7 +79,7 @@ class ApiRest {
 
     @GetMapping(value = ["commande/add"])
     fun ajouterCommande( /*@RequestBody Particulier particulier*/): ResponseEntity<Particulier> {
-        val particulier = Particulier(0,"Romaric BANGA", "Akebe", "bangaromaric@gmail.ga")
+        val particulier = Particulier(0,"Romaric BANGA", "Akebe", "bangaromaric@gmail.ga","qwertyui")
         val produit = Produit(0,"Pain", Unite.G, 1, 125.0)
         produit.id =5L
         particulier.id=1L

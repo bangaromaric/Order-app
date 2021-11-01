@@ -15,7 +15,7 @@ data class LigneCommands(
 
 //    @EqualsAndHashCode.Exclude
 //    @ToString.Exclude
-    @ManyToOne
+    @ManyToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "commande_id")
     val commande: Commande,
 

@@ -13,7 +13,8 @@ abstract class Client(
     private var id: Long,
     private var nom: String = "",
     private var adresse: String = "",
-    private var mail: String = ""
+    private var mail: String = "",
+    private var password: String= ""
 ) : Serializable {
 
 
