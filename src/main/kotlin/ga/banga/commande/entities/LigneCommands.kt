@@ -10,13 +10,11 @@ data class LigneCommands(
     @GeneratedValue
     val id: Long = 0,
     @ManyToOne
-    @JoinColumn(name = "produit_id")
-    var produit: Produit = Produit(),
+    var produit: Produit,
 
 //    @EqualsAndHashCode.Exclude
 //    @ToString.Exclude
     @ManyToOne(cascade = [CascadeType.ALL])
-    @JoinColumn(name = "commande_id")
     val commande: Commande,
 
     val quatite: Int = 0

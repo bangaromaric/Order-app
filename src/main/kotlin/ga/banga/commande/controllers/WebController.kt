@@ -82,16 +82,10 @@ class WebController {
             "client/addClient"
 
         }else if(type == "1"){
-            if (particulierPostDto.password == particulierPostDto.rePassword){
                 val particulier = mapstructMapper.particulierPostDtoToParticulier(particulierPostDto)
                 metier.insertParticulier(particulier)
                 "redirect:/"
             }
-            else{
-                ""
-            }
-
-        }
         else {
          val particulier = mapstructMapper.particulierPostDtoToParticulier(particulierPostDto)
             val societe = Societe(0,particulier.nom, particulier.adresse, particulier.mail, mat,"qwerty")
@@ -124,7 +118,8 @@ class WebController {
         model: Model
     ): String {
 //        metier.insertProduit(produit);
-        val cmd: Commande = metier.insertCommande(Commande(0, Date(), remise.toInt(), produit.prixUnitaire, client))
+//        val cmd: Commande = metier.insertCommande(Commande(0, Date(), remise.toInt(), produit.prixUnitaire, client))
+        val cmd = Commande(0, Date(), remise.toInt(), produit.prixUnitaire, client)
         metier.insertLigneCommand(LigneCommands(0,produit, cmd, quantite.toInt()))
 
         return "redirect:/commandes"
