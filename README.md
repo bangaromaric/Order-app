@@ -15,14 +15,16 @@ This project focuses in Dependency injection, Spring Data and Thymleaf.
 
 
 ## Tech stack & Open-source libraries
-- [Kotlin](https://kotlinlang.org/) .
+- [Kotlin](https://kotlinlang.org/) - A modern programming language that makes developers happier.
+- [DTO Pattern](https://www.baeldung.com/java-dto-pattern) - DTOs or Data Transfer Objects are objects that carry data between processes in order to reduce the number of methods calls.
+- [MapStruct](https://auth0.com/blog/how-to-automatically-map-jpa-entities-into-dtos-in-spring-boot-using-mapstruct/) - Mapping JPA Entities into DTOs in Spring Boot Using MapStruct.
 - [Spring MVC](https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/mvc.html) - The Spring Web model-view-controller (MVC) framework.
 - [Thymeleaf](https://www.thymeleaf.org/) - Thymeleaf is a modern server-side Java template engine for both web and standalone environments.
+- [Validating Form Input](https://spring.io/guides/gs/validating-form-input/) 
 - [Spring Data JPA](https://spring.io/projects/spring-data-jpa) - Makes it easy to easily implement JPA based repositories.
 - [Materializecss](https://materializecss.com/getting-started.html) - Learn how to easily start using Materialize in your website.
-- MariaDB - 10.3.31+
-- PWA
-- JavaScript
+- [PostgreSQL](https://www.postgresql.org/) - The World's Most Advanced Open Source Relational Database.
+- [PWA](https://web.dev/progressive-web-apps/) - Progressive Web Apps allow what you build to be installed by anyone, anywhere, on any device with a single codebase.
 
 
 ## Find this repository useful? :heart:
