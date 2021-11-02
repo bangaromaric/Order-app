@@ -1,8 +1,8 @@
 {
   "name": "Mycommande",
   "short_name": "Mycom",
-  "theme_color": "#ffcbe4",
-  "background_color": "#fa99ca",
+  "theme_color": "#E53935",
+  "background_color": "#E53935",
   "display": "standalone",
   "scope": "/",
   "start_url": "https://order-handling.herokuapp.com/",
